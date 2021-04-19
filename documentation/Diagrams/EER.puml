@@ -1,22 +1,48 @@
 @startuml
 'https://plantuml.com/use-case-diagram
 
-:Main Admin: as Admin
-(Use the application) as (Use)
+entity users {
+* user_id: number generated
+--
+email: text
+password: text
+role: text
+saldo: int
+}
+entity orders {
+* order_id: number generated
+--
+user_id: int (foreign key)
+price: int
+date: timestamp
+}
+entity cupcake {
+* cupcake_id: number generated
+--
+order_id: int (foreign key)
+toppings_id: int (foreign key)
+bases_id: int (foreign key)
+sum: int
+quantity: int
+}
+entity toppings {
+toppings_id: number generated
+--
+name: text
+price: int
+}
+entity bases {
+bases_id: number generated
+--
+name: text
+price: text
+}
 
-User -> (Start)
-User --> (Use)
+users ||.right.|{ orders
+orders ||..|{ cupcake
+cupcake }|..|| toppings
+cupcake }|..|| bases
 
-Admin ---> (Use)
 
-note right of Admin : This is an example.
 
-note right of (Use)
-A note can also
-Started work on EER Diagram
-end note
-
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
 @enduml
