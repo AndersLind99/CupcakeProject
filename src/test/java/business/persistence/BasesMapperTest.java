@@ -1,10 +1,19 @@
 package business.persistence;
 
 
+import business.entities.Bases;
+import business.exceptions.UserException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import javax.jws.soap.SOAPBinding;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BasesMapperTest {
 
@@ -32,10 +41,45 @@ public class BasesMapperTest {
     }
 
 
-@BeforeEach
-public  void setUp(){
+    @BeforeEach
+    public void setUp() {
 
-    //reset test database
+        //reset test database
+
+        try (Statement stmt = database.connect().createStatement()) {
+            stmt.execute("drop table if exists bases");
+            stmt.execute("create table " + TESTDATABASE + ".bases LIKE " + DATABASE + ".bases;");
+            stmt.execute(
+                    "insert into bases values " +
+                            "(1,'chocolate',5), " +
+                            "(2,'Vanilla',5), " +
+                            "(3,'Nutmeg',5)");
+
+        } catch (SQLException ex) {
+            System.out.println("could not open connection to the database: " + ex.getMessage());
+        }
+
+    }
+
+    @Test
+    public void testSetUpOK() {
+        // Just check that we have a connection.
+        assertNotNull(database);
+    }
+
+    @Test
+    public void testGetAllBases() throws UserException {
+        List<Bases> basesList = basesMapper.getAllBases();
+        assertTrue(basesList.size() == 3);
+
+    }
+
+    @Test
+    public void testGetBaseById() throws UserException{
+        Bases bases = basesMapper.getBasesById(1);
 
 
-} }
+
+    }
+
+}
