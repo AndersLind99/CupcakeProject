@@ -5,11 +5,11 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-        Frontpage
+        Shop
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-        <c:set var="addHomeLink" value="${false}" scope="request"/>
+        <c:set var="addHomeLink" value="${true}" scope="request"/>
     </jsp:attribute>
 
     <jsp:body>
@@ -17,16 +17,7 @@
         <div>
             <h2>Welcome to Olsker Cupcakes</h2>
 
-            <p>
-                here is a link to the shop:
-                <a href=fc/shoppage>Shop</a>
-
-            </p>
-
-            <div style="margin-top: 3em;margin-bottom: 3em;">
-                Home to the best cupcakes on the island. <br/>
-                Mums Filibaba.
-            </div>
+            <p>Welcome to the shop!</p>
 
             <c:if test="${sessionScope.role == 'employee' }">
                 <p style="font-size: larger">This is what you can do,

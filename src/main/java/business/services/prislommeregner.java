@@ -13,7 +13,7 @@ public class prislommeregner {
 
 
 
-        return;
+        return 0;
 
     }
 }
