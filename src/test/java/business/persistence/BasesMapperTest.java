@@ -70,17 +70,15 @@ public class BasesMapperTest {
     @Test
     public void testGetAllBases() throws UserException {
         List<Bases> basesList = basesMapper.getAllBases();
-        if (basesList.size() == 3) {
-            assertTrue(true);
-        }
+        assertEquals(basesList.size(),3);
     }
 
     @Test
     public void testGetBaseById() throws UserException {
         Bases bases = basesMapper.getBasesById(1);
-        if ("chocolate" == bases.getName()) {
-            assertTrue(true);
-        }
+        assertEquals ("chocolate", bases.getName());
+        System.out.println(bases.getName());
+
 
 
     }
