@@ -50,20 +50,19 @@ public class BasesMapper {
 
     }
 
-    public Bases getBasesById(int bases_Id) throws UserException {
+    public Bases getBasesById(int basesId) throws UserException {
         Bases bases = null;
         String sql = "select * from bases where bases_id = ?";
 
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, bases_Id);
+                ps.setInt(1, basesId);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
                     int bases_id = rs.getInt("bases_id");
                     String name = rs.getString("name");
                     int price = rs.getInt("price");
-                    bases = new Bases(bases_Id, name, price);
-
+                    bases = new Bases(bases_id, name, price);
 
                 }
 
@@ -79,6 +78,8 @@ public class BasesMapper {
 
         return bases;
     }
+
+
 
 
 }

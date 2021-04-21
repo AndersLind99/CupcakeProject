@@ -1,16 +1,16 @@
 package business.entities;
 
-public class Cupcake {
+public class Orderline {
 
-    private int cupcake_id;
+    private int orderLine_id;
     private int order_id;
     private int toppings_id;
     private int bases_id;
     private int quantity;
     private int sum;
 
-    public Cupcake(int cupcake_id, int order_id, int toppings_id, int bases_id, int quantity, int sum) {
-        this.cupcake_id = cupcake_id;
+    public Orderline(int orderline_id, int order_id, int toppings_id, int bases_id, int quantity, int sum) {
+        this.orderLine_id = orderline_id;
         this.order_id = order_id;
         this.toppings_id = toppings_id;
         this.bases_id = bases_id;
@@ -18,7 +18,7 @@ public class Cupcake {
         this.sum = sum;
     }
 
-    public Cupcake(int order_id, int toppings_id, int bases_id, int quantity, int sum) {
+    public Orderline(int order_id, int toppings_id, int bases_id, int quantity, int sum) {
         this.order_id = order_id;
         this.toppings_id = toppings_id;
         this.bases_id = bases_id;
@@ -26,12 +26,12 @@ public class Cupcake {
         this.sum = sum;
     }
 
-    public int getCupcake_id() {
-        return cupcake_id;
+    public int getOrderLine_id() {
+        return orderLine_id;
     }
 
-    public void setCupcake_id(int cupcake_id) {
-        this.cupcake_id = cupcake_id;
+    public void setOrderLine_id(int orderLine_id) {
+        this.orderLine_id = orderLine_id;
     }
 
     public int getOrder_id() {

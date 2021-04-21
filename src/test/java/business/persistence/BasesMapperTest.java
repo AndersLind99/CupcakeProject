@@ -30,7 +30,7 @@ public class BasesMapperTest {
 
 
     }
-}
+
 
 @BeforeEach
 public  void setUp(){
@@ -38,4 +38,4 @@ public  void setUp(){
     //reset test database
 
 
-}
+} }

@@ -1,8 +1,8 @@
 package business.persistence;
 
-//TODO lav orderMapper så vi kan oprette og se vores ordre
+//TODO lav orderLine mapper
 
-import business.entities.Order;
+
 import business.entities.Orderline;
 import business.exceptions.UserException;
 
@@ -10,31 +10,34 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderMapper {
+public class OrderLineMapper {
 
     private Database database;
 
-    public OrderMapper(Database database) {
+
+    public OrderLineMapper(Database database) {
         this.database = database;
 
     }
 
-    public List<Order> getAllOrders() throws UserException {
+    public List<Orderline> getAllOrderLines() throws UserException {
 
-        List<Order> orderList = new ArrayList<>();
+        List<Orderline> orderlineList = new ArrayList<>();
 
-        String sql = "select * from orders";
+        String sql = "select * from orderline";
 
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
+                    int orderLine_id = rs.getInt("orderLine_id");
                     int order_id = rs.getInt("order_id");
-                    int user_id = rs.getInt("user_id");
-                    int price = rs.getInt("price");
-                    String date = rs.getString("date");
+                    int toppings_id = rs.getInt("toppings_id");
+                    int bases_id = rs.getInt("bases_id");
+                    int sum = rs.getInt("sum");
+                    int quantity = rs.getInt("quantity");
 
-                    orderList.add(new Order(order_id, user_id, price, date));
+                    orderlineList.add(new Orderline(orderLine_id, order_id, toppings_id, bases_id, sum, quantity));
 
                 }
 
@@ -46,25 +49,27 @@ public class OrderMapper {
         } catch (SQLException ex) {
             throw new UserException("connection to database could not be established");
         }
-        return orderList;
+        return orderlineList;
 
     }
 
-    public Order getOrderById(int orderId) throws UserException {
-        Order order = null;
-        String sql = "select * from orders where order_id = ?";
+    public Orderline getOrderLineById(int orderLineId) throws UserException {
+        Orderline orderline = null;
+        String sql = "select * from orderline where orderLine_id = ?";
 
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, orderId);
+                ps.setInt(1, orderLineId);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
+                    int orderLine_id = rs.getInt("orderLine_id");
                     int order_id = rs.getInt("order_id");
-                    int user_id = rs.getInt("user_id");
-                    int price = rs.getInt("price");
-                    String date = rs.getString("date");
+                    int toppings_id = rs.getInt("toppings_id");
+                    int bases_id = rs.getInt("bases_id");
+                    int sum = rs.getInt("sum");
+                    int quantity = rs.getInt("quantity");
 
-                    order = new Order(order_id, user_id, price, date);
+                    orderline = new Orderline(orderLine_id, order_id, toppings_id, bases_id, sum, quantity);
 
                 }
 
@@ -78,18 +83,21 @@ public class OrderMapper {
             throw new UserException("connection to database could not be established");
         }
 
-        return order;
+        return orderline;
     }
 
-    public Order insertOrder(Order order) throws UserException {
+    public Orderline insertOrderLine(Orderline orderline) throws UserException {
         boolean result = false;
         int newId = 0;
-        String sql = "insert into orders (order_id, user_id, price) values (?,?,?)";
+        String sql = "insert into orderline (orderLine_id,order_id,toppings_id,bases_id,sum,quantity) values (?,?,?,?,?,?)";
         try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                ps.setInt(1, order.getOrder_id());
-                ps.setInt(2, order.getUser_id());
-                ps.setInt(3, order.getPrice());
+                ps.setInt(1, orderline.getOrderLine_id());
+                ps.setInt(2, orderline.getOrder_id());
+                ps.setInt(3, orderline.getToppings_id());
+                ps.setInt(4, orderline.getBases_id());
+                ps.setInt(5, orderline.getSum());
+                ps.setInt(6, orderline.getQuantity());
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
@@ -98,9 +106,9 @@ public class OrderMapper {
                 ResultSet idResultset = ps.getGeneratedKeys();
                 if (idResultset.next()) {
                     newId = idResultset.getInt(1);
-                    order.setOrder_id(newId);
+                    orderline.setOrderLine_id(newId);
                 } else {
-                    order = null;
+                    orderline = null;
                 }
             } catch (SQLException ex) {
 
@@ -111,7 +119,8 @@ public class OrderMapper {
         }
 
 
-        return order;
+        return orderline;
     }
+
 
 }
