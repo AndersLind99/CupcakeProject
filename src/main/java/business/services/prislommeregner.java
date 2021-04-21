@@ -1,11 +1,19 @@
 package business.services;
 
+import business.entities.Bases;
+import business.entities.Toppings;
+
+
 import java.util.Scanner;
 
 public class prislommeregner {
 
-Scanner pris = new Scanner(System.in);
+    public static int ToppingAndBase() {
 
 
 
+        return;
+
+    }
 }
+
