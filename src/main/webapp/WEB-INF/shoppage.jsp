@@ -52,7 +52,8 @@
 
                 <h3>Basket</h3><br>
 
-                du har valgt ${requestScope.amount} ${requestScope.bottom} muffins med ${requestScope.topping} på toppen. <br>
+
+                du har valgt ${requestScope.amount} ${requestScope.bottom} muffins med ${requestScope.topping} på toppen.
                 det koster ${requestScope.price} kr
 
 
