@@ -16,22 +16,17 @@ public class ShopCommand extends CommandUnprotectedPage {
 
         String bottom;
         String topping;
+        String amountTemp;
         int amount;
 
         bottom = request.getParameter("bottom");
         topping = request.getParameter("topping");
+        amountTemp = request.getParameter("amount");
 
-        if (request.getParameter("amount") == null) {
+        if (amountTemp == null || amountTemp == "") {
             amount = 0;
+        } else amount = Integer.parseInt(amountTemp);
 
-        } else {
-            try {
-                amount = Integer.parseInt(request.getParameter("Amount"));
-            } catch (NumberFormatException ex) {
-
-                throw new UserException("husk at du skal indtaste heltal");
-            }
-        }
 
         int price = 0;
 

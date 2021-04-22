@@ -40,7 +40,7 @@
                     <input type="radio" id="Raspberry_top" name="topping" value="Raspberry">
                     <label for="Raspberry_top"> Raspberry</label><br>
 
-                    <input id="amount" name="amount" type="number"/>
+                    <input id="amount" name="amount" type="number"  value="0"/>
                     <label for="amount">How many do you want?</label> <br> <br>
 
                     <button type="submit">add to cart</button>
@@ -53,7 +53,7 @@
                 <h3>Basket</h3><br>
 
                 du har valgt ${requestScope.amount} ${requestScope.bottom} muffins med ${requestScope.topping} på toppen. <br>
-                det koster ${requestScope.price}
+                det koster ${requestScope.price} kr
 
 
 
