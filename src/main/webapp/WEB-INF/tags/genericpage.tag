@@ -34,12 +34,13 @@
     </div>
     <nav class="my-2 my-md-0 me-md-3">
         <c:if test="${addHomeLink == null }">
-            <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Home</a>
+            <a class="p-2 text-dark"
+               href="<%=request.getContextPath()%>">Home</a>
         </c:if>
 
-        <c:if test="${addOrdersLink == null }">
-        <a class="p-2 text-dark"
-               href="${pageContext.request.contextPath}/fc/orderpage">Order</a>
+        <c:if test="${addShopLink == null }">
+            <a class="p-2 text-dark"
+               href="${pageContext.request.contextPath}/fc/shoppage">Shop</a>
         </c:if>
 
         <c:if test="${addProfileLink == null }">
@@ -56,6 +57,12 @@
             <a class="p-2 text-dark"
                href="${pageContext.request.contextPath}/fc/basketpage">Basket</a>
         </c:if>
+
+        <c:if test="${addOrdersLink == null }">
+        <a class="p-2 text-dark"
+               href="${pageContext.request.contextPath}/fc/orderpage">Order</a>
+        </c:if>
+
     </nav>
 
     <div>
