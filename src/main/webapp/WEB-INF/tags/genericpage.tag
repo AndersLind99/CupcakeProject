@@ -38,7 +38,7 @@
         </c:if>
 
         <c:if test="${addOrdersLink == null }">
-        <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Orders</a>
+        <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Order</a>
         </c:if>
 
         <c:if test="${addProfileLink == null }">
@@ -47,6 +47,10 @@
 
         <c:if test="${addAboutLink == null }">
         <a class="p-2 text-dark" href="<%=request.getContextPath()%>">About</a>
+        </c:if>
+
+        <c:if test="${addBasketLink == null }">
+            <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Basket</a>
         </c:if>
     </nav>
 
