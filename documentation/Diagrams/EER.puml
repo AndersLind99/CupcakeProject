@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+entity users {
+* user_id: number generated
+--
+email: text
+password: text
+role: text
+saldo: int
+}
+entity orders {
+* order_id: number generated
+--
+user_id: int (foreign key)
+price: int
+date: timestamp
+}
+entity cupcake {
+* cupcake_id: number generated
+--
+order_id: int (foreign key)
+toppings_id: int (foreign key)
+bases_id: int (foreign key)
+sum: int
+quantity: int
+}
+entity toppings {
+toppings_id: number generated
+--
+name: text
+price: int
+}
+entity bases {
+bases_id: number generated
+--
+name: text
+price: text
+}
+
+users ||.right.|{ orders
+orders ||..|{ cupcake
+cupcake }|..|| toppings
+cupcake }|..|| bases
+
+
+
+@enduml
