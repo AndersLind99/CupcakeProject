@@ -20,31 +20,46 @@
             <h2>Welcome to the shop!</h2>
             <h3>Create your cupcake</h3> <br>
 
-            <form method="post" >
+            <div>
+                <form method="post" action="shoppage">
 
-                <p>Choose your base:</p>
-                <input type="radio" id="Chocolate" name="bottom" value="Chocolate">
-                <label for="Chocolate"> Chocolate</label><br>
-                <input type="radio" id="Vanilla" name="bottom" value="Vanilla">
-                <label for="Vanilla"> Vanilla</label><br>
-                <input type="radio" id="Nutmeg" name="bottom" value="Nutmeg">
-                <label for="Nutmeg"> Nutmeg</label><br><br>
+                    <p>Choose your base:</p>
+                    <input type="radio" id="Chocolate" name="bottom" value="Chocolate">
+                    <label for="Chocolate"> Chocolate</label><br>
+                    <input type="radio" id="Vanilla" name="bottom" value="Vanilla">
+                    <label for="Vanilla"> Vanilla</label><br>
+                    <input type="radio" id="Nutmeg" name="bottom" value="Nutmeg">
+                    <label for="Nutmeg"> Nutmeg</label><br><br>
 
 
-                <p>Choose your topping:</p>
-                <input type="radio" id="Chocolate_top" name="topping" value="Chocolate">
-                <label for="Chocolate_top"> Chocolate</label><br>
-                <input type="radio" id="Blueberry_top" name="topping" value="Blueberry">
-                <label for="Blueberry_top"> Blueberry</label><br>
-                <input type="radio" id="Raspberry_top" name="topping" value="Raspberry">
-                <label for="Raspberry_top"> Raspberry</label><br>
+                    <p>Choose your topping:</p>
+                    <input type="radio" id="Chocolate_top" name="topping" value="Chocolate">
+                    <label for="Chocolate_top"> Chocolate</label><br>
+                    <input type="radio" id="Blueberry_top" name="topping" value="Blueberry">
+                    <label for="Blueberry_top"> Blueberry</label><br>
+                    <input type="radio" id="Raspberry_top" name="topping" value="Raspberry">
+                    <label for="Raspberry_top"> Raspberry</label><br>
 
-                <input id="amount"  name="amount" type="number"/>
-                <label for="amount">How many do you want?</label> <br> <br>
+                    <input id="amount" name="amount" type="number"/>
+                    <label for="amount">How many do you want?</label> <br> <br>
 
-                <button type="submit">add to cart</button>
+                    <button type="submit">add to cart</button>
 
-            </form>
+                </form>
+            </div>
+
+            <div>
+
+                <h3>Basket</h3><br>
+
+                du har valgt ${requestScope.amount} ${requestScope.bottom} muffins med ${requestScope.topping} på toppen. <br>
+                det koster ${requestScope.price}
+
+
+
+
+
+            </div>
 
             <c:if test="${sessionScope.role == 'employee' }">
             <p style="font-size: larger">This is what you can do,
