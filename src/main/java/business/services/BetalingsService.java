@@ -6,9 +6,15 @@ import business.entities.Toppings;
 
 import java.util.Scanner;
 
-public class BetalingsService {
+public class prislommeregner {
+
+    public static int ToppingAndBase() {
 
 
+
+
+        return;
+
+    }
 }
-
 

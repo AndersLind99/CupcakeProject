@@ -5,6 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
+        Frontpage
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -19,6 +20,12 @@
 
         <div>
             <h2>Welcome to Olsker Cupcakes</h2>
+
+            <p>
+                here is a link to the shop:
+                <a href=fc/shoppage>Shop</a>
+
+            </p>
 
             <div style="margin-top: 3em;margin-bottom: 3em;">
                 Home to the best cupcakes on the island. <br/>

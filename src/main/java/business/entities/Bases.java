@@ -1,5 +1,6 @@
 package business.entities;
 
+
 public class Bases {
 
     private int bases_id;
