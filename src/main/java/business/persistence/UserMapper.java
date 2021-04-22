@@ -29,7 +29,7 @@ public class UserMapper
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();
                 int id = ids.getInt(1);
-                user.setId(id);
+                user.setUserId(id);
             }
             catch (SQLException ex)
             {
@@ -58,7 +58,7 @@ public class UserMapper
                     String role = rs.getString("role");
                     int id = rs.getInt("id");
                     User user = new User(email, password, role);
-                    user.setId(id);
+                    user.setUserId(id);
                     return user;
                 } else
                 {
