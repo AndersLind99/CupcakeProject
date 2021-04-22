@@ -10,22 +10,23 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <t:genericpage>
     <jsp:attribute name="header">
-         Place a new Order
+         <h1> Welcome ${sessionScope.email} </h1>
+         <h2> Here you can see the current orders </h2>
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
         <div style="margin-top: 5em;">
-        <form name="order" action="${pageContext.request.contextPath}/fc/orderpage" method="POST"></form>
+            <form name="order" action="${pageContext.request.contextPath}/fc/orderpage" method="POST"></form>
 
 
-        <html>
-        <head>
-        <title>Hello</title>
-        </head>
-        <body>
-        </body>
-        </html>
+            <html>
+            <head>
+                <title>Current orders</title>
+            </head>
+            <body>
+            </body>
+            </html>
 
         </div>
     </jsp:body>
