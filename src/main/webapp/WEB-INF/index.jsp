@@ -10,6 +10,10 @@
 
     <jsp:attribute name="footer">
         <c:set var="addHomeLink" value="${false}" scope="request"/>
+        <c:set var="addOrderLink" value="${false}" scope="request"/>
+        <c:set var="addProfileLink" value="${false}" scope="request"/>
+        <c:set var="addAboutLink" value="${false}" scope="request"/>
+        <c:set var="addBasketLink" value="${false}" scope="request"/>
     </jsp:attribute>
 
     <jsp:body>
