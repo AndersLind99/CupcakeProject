@@ -38,19 +38,23 @@
         </c:if>
 
         <c:if test="${addOrdersLink == null }">
-        <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Order</a>
+        <a class="p-2 text-dark"
+               href="${pageContext.request.contextPath}/fc/orderpage">Order</a>
         </c:if>
 
         <c:if test="${addProfileLink == null }">
-        <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Profile</a>
+        <a class="p-2 text-dark"
+           href="${pageContext.request.contextPath}/fc/profilepage">Profile</a>
         </c:if>
 
         <c:if test="${addAboutLink == null }">
-        <a class="p-2 text-dark" href="<%=request.getContextPath()%>">About</a>
+        <a class="p-2 text-dark"
+           href="${pageContext.request.contextPath}/fc/aboutpage">About</a>
         </c:if>
 
         <c:if test="${addBasketLink == null }">
-            <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Basket</a>
+            <a class="p-2 text-dark"
+               href="${pageContext.request.contextPath}/fc/basketpage">Basket</a>
         </c:if>
     </nav>
 
@@ -75,8 +79,9 @@
             <a type="button" class="btn btn-sm  btn-outline-secondary"
                href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
         </c:if>
+        </c:if>
     </div>
-    </c:if>
+
 </header>
 
 
