@@ -21,7 +21,7 @@
             <h3>Create your cupcake</h3> <br>
 
             <div>
-                <form method="post" action="shoppage">
+                <form method="post">
 
                     <p>Choose your base:</p>
                     <input type="radio" id="Chocolate" name="bottom" value="Chocolate">
@@ -40,7 +40,7 @@
                     <input type="radio" id="Raspberry_top" name="topping" value="Raspberry">
                     <label for="Raspberry_top"> Raspberry</label><br>
 
-                    <input id="amount" name="amount" type="number"  value="0"/>
+                    <input id="amount" name="amount" type="number" value="0"/>
                     <label for="amount">How many do you want?</label> <br> <br>
 
                     <button type="submit">add to cart</button>
@@ -53,11 +53,23 @@
                 <h3>Basket</h3><br>
 
 
-                du har valgt ${requestScope.amount} ${requestScope.bottom} muffins med ${requestScope.topping} på toppen.
-                det koster ${requestScope.price} kr
+                <table>
+                    <thead>
+                    <th>base</th>
+                    <th>Topping</th>
+                    <th>amount</th>
+                    <th>Price</th>
+                    </thead>
+                    <c:forEach var="basketItemList" items="${requestScope.basketItemList}">
+                        <tr>
+                            <td>${basketItemList.base}</td>
+                            <td>${basketItemList.topping}</td>
+                            <td>${basketItemList.amount}</td>
+                            <td>${basketItemList.price}</td>
+                        </tr>
+                    </c:forEach>
 
-
-
+                </table>
 
 
             </div>

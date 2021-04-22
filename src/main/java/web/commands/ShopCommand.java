@@ -1,5 +1,6 @@
 package web.commands;
 
+import business.entities.BasketItem;
 import business.exceptions.UserException;
 import business.services.BasesFacade;
 import business.services.ShopCalc;
@@ -8,10 +9,10 @@ import business.services.ShopCalc;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 public class ShopCommand extends CommandProtectedPage {
     ShopCalc shopCalc;
-
 
 
     public ShopCommand(String pageToShow, String role) {
@@ -20,9 +21,7 @@ public class ShopCommand extends CommandProtectedPage {
     }
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response)  {
-
-
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
 
 
         String bottom;
@@ -42,9 +41,6 @@ public class ShopCommand extends CommandProtectedPage {
 
         int price = 0;
 
-
-
-
         try {
             price = shopCalc.totalPrice(bottom, topping, amount);
         } catch (UserException ex) {
@@ -52,10 +48,15 @@ public class ShopCommand extends CommandProtectedPage {
         }
 
 
+        List<BasketItem> basketItemList = shopCalc.addToBasket(bottom,topping,amount,price);
+        request.setAttribute("basketItemList", basketItemList);
+
+
         request.setAttribute("bottom", bottom);
         request.setAttribute("topping", topping);
         request.setAttribute("amount", amount);
         request.setAttribute("price", price);
+
 
 
 

@@ -1,11 +1,13 @@
 package business.services;
 
 import business.entities.Bases;
+import business.entities.BasketItem;
 import business.entities.Toppings;
 import business.exceptions.UserException;
 import business.persistence.BasesMapper;
 import business.persistence.Database;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopCalc {
@@ -13,6 +15,8 @@ public class ShopCalc {
 
     private BasesFacade basesFacade;
     private ToppingsFacade toppingsFacade;
+
+    List<BasketItem> basketItemList = new ArrayList<>();
 
     public ShopCalc(Database database) {
 
@@ -61,6 +65,13 @@ public class ShopCalc {
         totalPrice = getBasePrice(bottom) + getToppingsPrice(topping) * amount;
 
         return totalPrice;
+    }
+
+    public List<BasketItem> addToBasket(String bottom, String topping, int amount, int price) {
+
+        basketItemList.add(new BasketItem(bottom, topping, amount, price));
+
+        return basketItemList;
     }
 
 
