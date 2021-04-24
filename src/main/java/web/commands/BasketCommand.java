@@ -5,6 +5,7 @@ import business.entities.Basket;
 import business.entities.BasketItem;
 import business.entities.Toppings;
 import business.exceptions.UserException;
+import jdk.nashorn.internal.ir.RuntimeNode;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,35 +25,39 @@ public class BasketCommand extends CommandUnprotectedPage {
         int basesId;
         int amount;
 
-        try {
-            toppingsId = Integer.parseInt(request.getParameter("toppings"));
-            basesId = Integer.parseInt(request.getParameter("bases"));
-            amount = Integer.parseInt(request.getParameter("amount"));
-        } catch (NumberFormatException ex) {
+        if (request.getParameter("toppings") != null) {
 
-            throw new UserException("fejl i indtasing på forsiden");
+            try {
+                toppingsId = Integer.parseInt(request.getParameter("toppings"));
+                basesId = Integer.parseInt(request.getParameter("bases"));
+                amount = Integer.parseInt(request.getParameter("amount"));
+            } catch (NumberFormatException ex) {
+
+                throw new UserException("fejl i indtasing på forsiden");
+            }
+
+            List<Toppings> toppingsList = (List<Toppings>) request.getServletContext().getAttribute("toppingsList");
+            List<Bases> basesList = (List<Bases>) request.getServletContext().getAttribute("basesList");
+
+            HttpSession session = request.getSession();
+
+            Basket basket = (Basket) session.getAttribute("basket");
+
+            if (basket == null) {
+
+                basket = new Basket();
+
+            }
+
+            Toppings toppings = getToppingFromId(toppingsList, toppingsId);
+            Bases bases = getBasesFromId(basesList, basesId);
+            BasketItem basketItem = new BasketItem(bases, toppings, amount);
+
+            basket.addToBasket(basketItem);
+
+            session.setAttribute("basket", basket);
+
         }
-
-        List<Toppings> toppingsList = (List<Toppings>) request.getServletContext().getAttribute("toppingsList");
-        List<Bases> basesList = (List<Bases>) request.getServletContext().getAttribute("basesList");
-
-        HttpSession session = request.getSession();
-
-        Basket basket = (Basket) session.getAttribute("basket");
-
-        if (basket == null) {
-
-            basket = new Basket();
-
-        }
-
-        Toppings toppings = getToppingFromId(toppingsList, toppingsId);
-        Bases bases = getBasesFromId(basesList, basesId);
-        BasketItem basketItem = new BasketItem(bases,toppings,amount);
-
-        basket.addToBasket(basketItem);
-
-        session.setAttribute("basket", basket);
 
 
         return pageToShow;

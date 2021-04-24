@@ -55,7 +55,7 @@
 
         <c:if test="${addBasketLink == null }">
             <a class="p-2 text-dark"
-               href="${pageContext.request.contextPath}/fc/basketpage">Basket</a>
+               href="${pageContext.request.contextPath}/fc/basketpage">Basket (${sessionScope.basket.numberOfItems})</a>
         </c:if>
 
         <c:if test="${addOrdersLink == null }">
