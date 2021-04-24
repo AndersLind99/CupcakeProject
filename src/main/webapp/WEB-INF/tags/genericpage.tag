@@ -55,7 +55,7 @@
 
         <c:if test="${addBasketLink == null }">
             <a class="p-2 text-dark"
-               href="${pageContext.request.contextPath}/fc/basketpage">Basket (${sessionScope.basket.numberOfItems})</a>
+               href="${pageContext.request.contextPath}/fc/basketpage">Basket (${sessionScope.basket.numberOfItems})</a> <!-- Make this show (0),instead of () when basket is empty -->
         </c:if>
 
         <c:if test="${addOrdersLink == null }">
