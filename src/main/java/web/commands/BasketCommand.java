@@ -25,7 +25,7 @@ public class BasketCommand extends CommandUnprotectedPage {
         int basesId;
         int amount;
 
-        if (request.getParameter("toppings") != null) {
+        if (request.getParameter("bases") != null) {
 
             try {
                 toppingsId = Integer.parseInt(request.getParameter("toppings"));
@@ -38,6 +38,7 @@ public class BasketCommand extends CommandUnprotectedPage {
 
             List<Toppings> toppingsList = (List<Toppings>) request.getServletContext().getAttribute("toppingsList");
             List<Bases> basesList = (List<Bases>) request.getServletContext().getAttribute("basesList");
+
 
             HttpSession session = request.getSession();
 
@@ -56,9 +57,7 @@ public class BasketCommand extends CommandUnprotectedPage {
             basket.addToBasket(basketItem);
 
             session.setAttribute("basket", basket);
-
         }
-
 
         return pageToShow;
     }
