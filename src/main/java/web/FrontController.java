@@ -1,11 +1,16 @@
 package web;
 
+import business.entities.Bases;
+import business.entities.Toppings;
 import business.exceptions.UserException;
 import business.persistence.Database;
+import business.services.BasesFacade;
+import business.services.ToppingsFacade;
 import web.commands.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -39,6 +44,22 @@ public class FrontController extends HttpServlet
         }
 
         // Initialize whatever global datastructures needed here:
+
+        ToppingsFacade toppingsFacade = new ToppingsFacade(database);
+        BasesFacade basesFacade = new BasesFacade(database);
+
+        try {
+
+            List<Toppings> toppingsList = toppingsFacade.getAllToppings();
+            getServletContext().setAttribute("toppingsList", toppingsList);
+            List<Bases> basesList = basesFacade.getAllBases();
+            getServletContext().setAttribute("basesList", basesList);
+
+
+
+        } catch (UserException e){
+            e.printStackTrace();
+        }
 
     }
 

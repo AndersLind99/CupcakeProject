@@ -21,24 +21,37 @@
             <h3>Create your cupcake</h3> <br>
 
             <div>
-                <form method="post">
+                <form method="post" action="basketpage">
 
-                    <p>Choose your base:</p>
-                    <input type="radio" id="Chocolate" name="bottom" value="Chocolate">
-                    <label for="Chocolate"> Chocolate</label><br>
-                    <input type="radio" id="Vanilla" name="bottom" value="Vanilla">
-                    <label for="Vanilla"> Vanilla</label><br>
-                    <input type="radio" id="Nutmeg" name="bottom" value="Nutmeg">
-                    <label for="Nutmeg"> Nutmeg</label><br><br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-check-label" for="bases">Bases:</label>
+                                <select class="form-control" name="bases" id="bases">
+                                    <c:forEach var="bases" items="${applicationScope.basesList}">
+                                        <option value="${bases.bases_id}">${bases.name}(${bases.price} kr.)</option>
+                                    </c:forEach>
+                                </select>
 
+                            </div>
+                        </div>
+                    </div>
 
-                    <p>Choose your topping:</p>
-                    <input type="radio" id="Chocolate_top" name="topping" value="Chocolate">
-                    <label for="Chocolate_top"> Chocolate</label><br>
-                    <input type="radio" id="Blueberry_top" name="topping" value="Blueberry">
-                    <label for="Blueberry_top"> Blueberry</label><br>
-                    <input type="radio" id="Raspberry_top" name="topping" value="Raspberry">
-                    <label for="Raspberry_top"> Raspberry</label><br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-check-label" for="toppings">Toppings:</label>
+                                <select class="form-control" name="toppings" id="toppings">
+                                    <c:forEach var="toppings" items="${applicationScope.toppingsList}">
+                                        <option value="${toppings.toppings_id}">${toppings.name}(${toppings.price}
+                                            kr.)
+                                        </option>
+                                    </c:forEach>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
 
                     <input id="amount" name="amount" type="number" value="0"/>
                     <label for="amount">How many do you want?</label> <br> <br>
@@ -48,43 +61,20 @@
                 </form>
             </div>
 
-            <div>
 
-                <h3>Basket</h3><br>
+        </div>
 
-
-                <table>
-                    <thead>
-                    <th>base</th>
-                    <th>Topping</th>
-                    <th>amount</th>
-                    <th>Price</th>
-                    </thead>
-                    <c:forEach var="basketItemList" items="${requestScope.basketItemList}">
-                        <tr>
-                            <td>${basketItemList.base}</td>
-                            <td>${basketItemList.topping}</td>
-                            <td>${basketItemList.amount}</td>
-                            <td>${basketItemList.price}</td>
-                        </tr>
-                    </c:forEach>
-
-                </table>
-
-
-            </div>
-
-            <c:if test="${sessionScope.role == 'employee' }">
+        <c:if test="${sessionScope.role == 'employee' }">
             <p style="font-size: larger">This is what you can do,
                 since your are logged in as an employee</p>
             <p><a href="fc/employeepage">Employee Page</a>
-                </c:if>
+        </c:if>
 
-                <c:if test="${sessionScope.role == 'customer' }">
+        <c:if test="${sessionScope.role == 'customer' }">
             <p style="font-size: larger">This is what you can do, since your
                 are logged in as a customer</p>
             <p><a href="fc/customerpage">Customer Page</a>
-                </c:if>
+        </c:if>
 
         </div>
 

@@ -2,31 +2,34 @@ package business.entities;
 
 public class BasketItem {
 
-    private String base;
-    private String topping;
+    private Bases base;
+    private Toppings topping;
     private int amount;
-    private int price;
 
-    public BasketItem(String base, String topping, int amount, int price) {
+    public BasketItem(Bases base, Toppings topping, int amount) {
         this.base = base;
         this.topping = topping;
         this.amount = amount;
-        this.price = price;
     }
 
-    public String getBase() {
+    public int getPrice(){
+
+        return (topping.getPrice() + base.getPrice() * amount);
+    }
+
+    public Bases getBase() {
         return base;
     }
 
-    public void setBase(String base) {
+    public void setBase(Bases base) {
         this.base = base;
     }
 
-    public String getTopping() {
+    public Toppings getTopping() {
         return topping;
     }
 
-    public void setTopping(String topping) {
+    public void setTopping(Toppings topping) {
         this.topping = topping;
     }
 
@@ -36,13 +39,5 @@ public class BasketItem {
 
     public void setAmount(int amount) {
         this.amount = amount;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 }
