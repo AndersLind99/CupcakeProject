@@ -22,9 +22,27 @@
 
             <html>
             <head>
-                <title>Current orders</title>
+                <title>All orders</title>
             </head>
             <body>
+
+            <table class="table table-striped">
+                <thead>
+                <th>User_id</th>
+                <th>Order_id</th>
+                <th>Date</th>
+                <th>Price</th>
+                </thead>
+                <c:forEach var="orderList" items="${sessionScope.orderList}">
+                    <tr>
+                        <td>${orderList.user_id} </td>
+                        <td>${orderList.order_id}</td>
+                        <td>${orderList.date}</td>
+                        <td>${orderList.price} ,-</td>
+                    </tr>
+                </c:forEach>
+            </table>
+
             </body>
             </html>
 

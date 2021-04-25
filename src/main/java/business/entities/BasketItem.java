@@ -14,7 +14,7 @@ public class BasketItem {
 
     public int getPrice(){
 
-        return (topping.getPrice() + base.getPrice() * amount);
+        return ((topping.getPrice() + base.getPrice()) * amount);
     }
 
     public Bases getBase() {
