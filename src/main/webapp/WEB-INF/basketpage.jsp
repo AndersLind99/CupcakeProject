@@ -59,7 +59,7 @@
                href="${pageContext.request.contextPath}/fc/shoppage">add more</a>
 
             <a type="button" class="btn btn-sm  btn-outline-secondary"
-               href="${pageContext.request.contextPath}/fc/orderconfirmationpage">add more</a>
+               href="${pageContext.request.contextPath}/fc/orderconfirmationpage">order</a>
 
 
             <c:if test="${sessionScope.role == 'employee' }">

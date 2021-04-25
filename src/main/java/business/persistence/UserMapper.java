@@ -76,4 +76,37 @@ public class UserMapper
         }
     }
 
+    public int getUserId(String email) throws UserException
+    {
+        try (Connection connection = database.connect())
+        {
+            String sql = "SELECT user_id, role FROM users WHERE email=?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setString(1, email);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next())
+                {
+                    int id = rs.getInt("user_id");
+                    return id;
+                } else
+                {
+                    throw new UserException("Could not validate user");
+                }
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+
+
+
 }

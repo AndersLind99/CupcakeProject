@@ -14,10 +14,10 @@ public class Order {
         this.date = date;
     }
 
-    public Order(int user_id, int price, String date) {
+    public Order(int user_id, int price) {
         this.user_id = user_id;
         this.price = price;
-        this.date = date;
+
     }
 
     public int getOrder_id() {

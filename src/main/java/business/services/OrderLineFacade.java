@@ -11,7 +11,7 @@ public class OrderLineFacade {
 
     private OrderLineMapper orderLineMapper;
 
-    private OrderLineFacade (Database database){
+    public OrderLineFacade(Database database){
 
         this.orderLineMapper = new OrderLineMapper(database);
 

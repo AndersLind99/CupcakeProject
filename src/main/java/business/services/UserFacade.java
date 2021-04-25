@@ -26,4 +26,10 @@ public class UserFacade
         return user;
     }
 
+    public int getUserId(String email) throws UserException {
+
+        return userMapper.getUserId(email);
+
+    }
+
 }
