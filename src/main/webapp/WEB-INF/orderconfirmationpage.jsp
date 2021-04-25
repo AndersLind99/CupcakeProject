@@ -17,49 +17,11 @@
         <div>
 
 
-            <h2>Basket</h2>
-            <h3>here is everything in ur basket</h3> <br>
+            <h2>Order confirmed</h2>
+            <h3>you're order will be available for pick within 1 hour.</h3> <br>
 
 
-            <div>
 
-                <h3>Basket</h3><br>
-
-
-                <table class="table table-striped">
-                    <thead>
-                    <th>base</th>
-                    <th>Topping</th>
-                    <th>amount</th>
-                    <th>Price</th>
-                    </thead>
-                    <c:forEach var="basketItem" items="${sessionScope.basket.basketItemList}">
-                        <tr>
-                            <td>${basketItem.base.name}</td>
-                            <td>${basketItem.topping.name}</td>
-                            <td>${basketItem.amount}</td>
-                            <td>${basketItem.price} kr</td>
-                        </tr>
-                    </c:forEach>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>Total Price:</td>
-                        <td>${sessionScope.basket.totalSum()}kr</td>
-                    </tr>
-
-
-                </table>
-
-
-            </div>
-
-
-            <a type="button" class="btn btn-sm  btn-outline-secondary"
-               href="${pageContext.request.contextPath}/fc/shoppage">add more</a>
-
-            <a type="button" class="btn btn-sm  btn-outline-secondary"
-               href="${pageContext.request.contextPath}/fc/orderconfirmationpage">add more</a>
 
 
             <c:if test="${sessionScope.role == 'employee' }">
