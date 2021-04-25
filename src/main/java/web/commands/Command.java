@@ -37,6 +37,7 @@ public abstract class Command
 
     }
 
+
     public static Command fromPath(
             HttpServletRequest request,
             Database db)
