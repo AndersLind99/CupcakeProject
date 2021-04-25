@@ -31,9 +31,9 @@ public class Basket {
 
     }
 
-    public double totalSum() {
+    public int totalSum() {
 
-        double sum = 0.0;
+        int sum = 0;
         for (BasketItem basketItem : basketItemList
         ) {
             sum += basketItem.getPrice();

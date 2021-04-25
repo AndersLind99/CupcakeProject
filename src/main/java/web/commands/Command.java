@@ -33,6 +33,7 @@ public abstract class Command
         commands.put("aboutpage", new CommandProtectedPage("aboutpage", "customer"));
         commands.put("profilepage", new CommandProtectedPage("profilepage", "customer"));
         commands.put("basketpage", new BasketCommand("basketpage"));
+        commands.put("orderconfirmationpage", new OrderConfirmationCommand("orderconfirmationpage","customer"));
 
     }
 
