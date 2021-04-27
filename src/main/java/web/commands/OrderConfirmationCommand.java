@@ -54,6 +54,8 @@ public class OrderConfirmationCommand extends CommandProtectedPage {
         }
 
 
+
+
         return pageToShow;
     }
 }
